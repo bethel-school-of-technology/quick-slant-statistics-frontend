@@ -14,3 +14,8 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+//api path would be put here, localhost3000:, for each call instead of doing localhost:3000, you would pull the route from this file and conconate the generate_uid.
+
+//put your local in the environments.ts, and then you put your production in the environment.prod.ts
