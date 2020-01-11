@@ -1,7 +1,7 @@
 export class UserInfoModel
 {
 	guid: string;
-	userId: number;
+	customerUid: string;
 	
 	first_name: string;
 	last_name: string;

@@ -14,7 +14,7 @@ export class DisplayUserDataComponent implements OnInit {
   user: UserInfoModel = new UserInfoModel({
 
     guid: "D21ds12x",
-    userId: 1234,
+    uid: "1234abc",
     first_name: "John",
     last_name: "Doe",
     email: "email@email.com",
