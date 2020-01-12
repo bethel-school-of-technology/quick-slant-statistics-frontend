@@ -7,6 +7,7 @@ export class UserInfoModel
 	email: string;
 	username: string;
 	password: string;
+	token?: string;
 
 	constructor(obj: any = null)
 	{
