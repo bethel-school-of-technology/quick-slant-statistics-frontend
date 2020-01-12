@@ -3,29 +3,26 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 //added during wire up
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-
 export class UserFormComponent implements OnInit {
 
   registered = false;
 	submitted = false;
   userForm: FormGroup;
-  //added during wire up
   guid: string;
 	serviceErrors:any = {};
 
   constructor(private formBuilder: FormBuilder, //added during wire up 
-    private http: HttpClient, private router: Router)
+    private http: HttpClient, private router: Router, private title: Title)
   { 
-    this.http.get('http://localhost:3000/api/v1/generate_uid').subscribe((data:any) => {
-      this.guid = data.guid; //look at uid in this one as well.
-      console.log("this.guid");
-      console.log(this.guid);
+    this.http.get('/api/v1/generate_uid').subscribe((data:any) => {
+      this.guid = data.guid;
     }, error => {
         console.log("There was an error generating the proper GUID on the server", error);
     });
@@ -59,12 +56,14 @@ export class UserFormComponent implements OnInit {
   ngOnInit()
   {
   	this.userForm = this.formBuilder.group({
-      first_name: ['', [Validators.required, Validators.maxLength(50)]],
+      first_name: ['', [Validators.required]],
   		last_name: ['', [Validators.required, Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(75)]],
-      username: ['', Validators.required], 
+      username: ['', [Validators.required]], 
   		password: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]],
-  	});
+     
+    }); this.title.setTitle('Quick Slants');
+    
   }
 
   onSubmit()
@@ -78,10 +77,7 @@ export class UserFormComponent implements OnInit {
   	else
   	{
   		let data: any = Object.assign({guid: this.guid}, this.userForm.value);
-      console.log("Before Post call")
-      console.log(this.http)
-  		this.http.get('http://localhost:3000/api/v1/test', data).subscribe((data:any) => {
-        console.log("After Post call")
+  		this.http.post('/api/v1/customer', data).subscribe((data:any) => {
 	      let path = '/user/' + data.customer.uid;
 
 	      this.router.navigate([path]);

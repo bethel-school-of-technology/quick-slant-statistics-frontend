@@ -9,35 +9,35 @@
         <!-- First Name -->
         <label for="first_name" class="control-label">First Name:</label>
         <input type="text" formControlName="first_name" class="form-control" id="first_name" name="first_name">
-        <p *ngIf="invalidFirstName()" id="first_name_error" class="help-block">Invalid first name.</p>
+        <p *ngIf="invalidFirstName()" id="first_name_error" class="help-block">{{ this.serviceErrors.first_name || 'Invalid first name.' }}</p>
     </div>
 
     <div class="form-group" [ngClass]="{ 'has-error': invalidLastName() }">
         <!-- Last Name -->
         <label for="last_name" class="control-label">Last Name:</label>
         <input type="text" formControlName="last_name" class="form-control" id="last_name" name="last_name">
-        <p *ngIf="invalidLastName()" id="last_name_error" class="help-block">Invalid last name.</p>
+        <p *ngIf="invalidLastName()" id="last_name_error" class="help-block">{{ this.serviceErrors.last_name || 'Invalid last name.' }}</p>
     </div>
 
     <div class="form-group" [ngClass]="{ 'has-error': invalidEmail() }">
         <!-- Email -->
         <label for="email" class="control-label">Email:</label>
         <input type="text" formControlName="email" class="form-control" id="email" name="email">
-        <p *ngIf="invalidEmail()" id="email_error" class="help-block">Invalid email address.</p>
+        <p *ngIf="invalidEmail()" id="email_error" class="help-block">{{ this.serviceErrors.email || 'Invalid email.' }}</p>
     </div>
 
     <div class="form-group" [ngClass]="{ 'has-error': invalidUsername() }">
          <!-- Username -->
         <label for="username" class="control-label">Username: </label>
         <input type="text" formControlName="username" class="form-control" id="username" name="username">
-        <p *ngIf="invalidUsername()" id="username_error" class="help-block">Invalid username.</p>
+        <p *ngIf="invalidUsername()" id="username_error" class="help-block">{{ this.serviceErrors.username || 'Invalid username.' }}</p>
 
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': invalidPassword() }">
         <!-- Password -->
         <label for="password" class="control-label">Password</label>
         <input type="password" formControlName="password" class="form-control" id="password" name="password">
-        <p *ngIf="invalidPassword()" id="password_error" class="help-block">Invalid password. Must contain at least one number, one uppercase letter, and one lowercase letter. (Special characters are not permitted).</p>
+        <p *ngIf="invalidPassword()" id="password_error" class="help-block">{{ this.serviceErros.password || 'Invalid password. Must contain at least one number, one uppercase letter, and one lowercase letter. (Special characters are not permitted).'}}</p>
     </div>
 
     <div class="form-group has-error">
@@ -47,4 +47,4 @@
 </form>
 
 
-<h3 style="font-style: italic;">Already have an account? <a href="www.google.com">Login</a></h3>
+<h3 style="font-style: italic;">Already have an account? <a href="/login">Login</a></h3>
