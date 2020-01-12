@@ -2,14 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
-//import { Router } from "@angular/router";
-
-
+//ng serve --proxy-config proxy.conf.json
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { DisplayUserDataComponent } from './display-user-data/display-user-data.component';
 import { Routes, RouterModule } from "@angular/router";
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -19,6 +18,10 @@ const routes: Routes = [
   {
     path: 'user/:generate_uid', 
     component: DisplayUserDataComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
@@ -27,6 +30,7 @@ const routes: Routes = [
     AppComponent,
     UserFormComponent,
     DisplayUserDataComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    //Router
   ],
   providers: [],
   bootstrap: [AppComponent]

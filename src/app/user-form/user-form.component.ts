@@ -3,24 +3,23 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 //added during wire up
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-
 export class UserFormComponent implements OnInit {
 
   registered = false;
 	submitted = false;
   userForm: FormGroup;
-  //added during wire up
   guid: string;
 	serviceErrors:any = {};
 
   constructor(private formBuilder: FormBuilder, //added during wire up 
-    private http: HttpClient, private router: Router)
+    private http: HttpClient, private router: Router, private title: Title)
   { 
     this.http.get('/api/v1/generate_uid').subscribe((data:any) => {
       this.guid = data.guid;
@@ -57,12 +56,14 @@ export class UserFormComponent implements OnInit {
   ngOnInit()
   {
   	this.userForm = this.formBuilder.group({
-      first_name: ['', [Validators.required, Validators.maxLength(50)]],
+      first_name: ['', [Validators.required]],
   		last_name: ['', [Validators.required, Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(75)]],
-      username: ['', Validators.required], 
+      username: ['', [Validators.required]], 
   		password: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]],
-  	});
+     
+    }); this.title.setTitle('Quick Slants');
+    
   }
 
   onSubmit()
