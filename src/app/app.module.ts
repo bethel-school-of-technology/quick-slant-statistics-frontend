@@ -17,7 +17,7 @@ const routes: Routes = [
     component: UserFormComponent
   },
   {
-    path: 'user/generate_uid', //look at this url path
+    path: 'user/:generate_uid', 
     component: DisplayUserDataComponent
   }
 ];

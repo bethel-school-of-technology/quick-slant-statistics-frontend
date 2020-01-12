@@ -30,9 +30,8 @@ export class DisplayUserDataComponent implements OnInit {
   ngOnInit() {//added during wire up
 this.subscriber = this.route.params.subscribe(params => {
 	       
-	       this.http.get('/api/v1/customer/' + params.uid).subscribe((data:any) => { //look at this "uid"
-
-				this.user = new UserInfoModel(data.customer);
+	       this.http.get('/api/v1/customer/' + params.generate_uid).subscribe((data:any) => { //look at this "uid"
+       		this.user = new UserInfoModel(data.customer);
       });
     });
 }
