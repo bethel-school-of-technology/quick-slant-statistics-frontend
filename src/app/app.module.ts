@@ -1,17 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //ng serve --proxy-config proxy.conf.json
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { DisplayUserDataComponent } from './display-user-data/display-user-data.component';
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { fakeBackendProvider } from '../app/helpers/fake-backend';
 import { JwtInterceptor } from '../app/helpers/jwt.interceptor';
 import { ErrorInterceptor } from '../app/helpers/error.interceptor';
+import { ChatComponent } from '../app/chat/chat.component';
 
 //import { routing } from './app.routing';
 
@@ -22,7 +23,7 @@ const routes: Routes = [
     component: UserFormComponent
   },
   {
-    path: 'user/:generate_uid', 
+    path: 'user/:generate_uid',
     component: DisplayUserDataComponent
   },
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
     UserFormComponent,
     DisplayUserDataComponent,
     LoginComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
