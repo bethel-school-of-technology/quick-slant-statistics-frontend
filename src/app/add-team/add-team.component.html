@@ -1,0 +1,60 @@
+<div [hidden]="submitted">
+    <h1>Enter NFL Team Information</h1>
+    <h3>Fill in the fields to create your NFL Team Database.</h3>
+    <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" 
+            required
+            [(ngModel)]="model.name" name="name"
+            #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+            Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="division">Division</label>
+        <select class="form-control" id="division"
+                 required
+                 [(ngModel)]="model.division" name="division">
+            <option *ngFor="let div of divisions" [value]="div">{{div}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="wins">Wins:</label>
+          <input type="number" class="form-control" id="wins"
+          required
+          [(ngModel)]="model.wins" name="wins">
+          <label for="losses">Losses:</label>
+          <input type="number" class="form-control" id="losses"
+          required
+          [(ngModel)]="model.losses" name="losses">
+      </div>
+      <button type="submit" class="btn btn-success"
+      [disabled]="!teamForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newTeam();
+      teamForm.reset()">New Team</button>
+    </form>
+</div>
+<div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+        <div class="col-xs-3">Name</div>
+        <div class="col-xs-9">{{ model.name }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">Division</div>
+        <div class="col-xs-9">{{ model.division }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">Wins</div>
+        <div class="col-xs-9">{{ model.wins }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">Losses</div>
+        <div class="col-xs-9">{{ model.losses }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>
