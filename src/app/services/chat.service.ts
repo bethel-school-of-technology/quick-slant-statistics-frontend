@@ -1,58 +1,25 @@
-import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
-import {Observable} from 'rxjs';
-//import { ChatComponent } from '../chat/chat.component';
+import { Observable } from 'node_modules/rxjs';
+import { Injectable } from '@angular/core';
 
-
-@Injectable()
-
-
+@Injectable({ providedIn: 'root' })
 export class ChatService {
+    private url = 'http://localhost:3050';
+    private socket;
 
-    private socket = io('http://localhost:4200');
-
-    joinRoom(data) {
-        this.socket.emit('join', data);
+    constructor() {
+        this.socket = io(this.url);
     }
 
-    newUserJoined() {
-        const observable = new Observable<{user: String, message: String}>(observer => {
-            this.socket.on('new user joined', (data) => {
-                observer.next(data);
+    public sendMessage(message) {
+        this.socket.emit('new-message', message);
+    }
+
+    public getMessages = () => {
+        return Observable.create((observer) => {
+            this.socket.on('new-message', (message) => {
+                observer.next(message);
             });
-            return () => {this.socket.disconnect(); };
         });
-
-        return observable;
-    }
-
-    leaveRoom(data) {
-        this.socket.emit('leave', data);
-    }
-
-    userLeftRoom() {
-        const observable = new Observable<{user: String, message: String}>(observer => {
-            this.socket.on('left room', (data) => {
-                observer.next(data);
-            });
-            return () => {this.socket.disconnect(); };
-        });
-
-        return observable;
-    }
-
-    sendMessage(data) {
-        this.socket.emit('message', data);
-    }
-
-    newMessageReceived() {
-        const observable = new Observable<{user: String, message: String}>(observer => {
-            this.socket.on('new message', (data) => {
-                observer.next(data);
-            });
-            return () => {this.socket.disconnect(); };
-        });
-
-        return observable;
     }
 }
