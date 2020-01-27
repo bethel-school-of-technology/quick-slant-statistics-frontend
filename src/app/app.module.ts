@@ -14,6 +14,8 @@ import { JwtInterceptor } from '../app/helpers/jwt.interceptor';
 import { ErrorInterceptor } from '../app/helpers/error.interceptor';
 import { ChatComponent } from 'src/app/chat/chat.component';
 import { AddTeamComponent } from './add-team/add-team.component';
+import { ViewteamsComponent } from './viewteams/viewteams.component';
+
 
 // import { routing } from './app.routing';
 
@@ -38,8 +40,14 @@ const routes: Routes = [
   {
     path: 'addteam',
     component: AddTeamComponent
+  },
+
+  {
+    path: 'view',
+    component: ViewteamsComponent
   }
-];
+
+]
 
 @NgModule({
   declarations: [
@@ -49,6 +57,7 @@ const routes: Routes = [
     LoginComponent,
     ChatComponent,
     AddTeamComponent,
+    ViewteamsComponent,
   ],
   imports: [
     BrowserModule,

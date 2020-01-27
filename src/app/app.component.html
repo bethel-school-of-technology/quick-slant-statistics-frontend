@@ -4,16 +4,33 @@
       <a class="nav-link" routerLink="/login">Login<span class="sr-only">(current)</span></a>
       <a class="nav-link" routerLink="/chat">Chat<span class="sr-only">(current)</span></a>
       <a class="nav-link" routerLink="/addteam">Create Team<span class="sr-only">(current)</span></a>
+      <a class="nav-link" routerLink="/view">NFL Teams<span class="sr-only">(current)</span></a>
   </div>
 </nav>
+
+
+<!--<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<hr/>
+<div style="text-align:center">
+  <div>
+      <h2>Static Team Data</h2>
+      <h3>{{staticPath}}</h3>
+  </div>
+</div> -->
 
 
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-        <router-outlet></router-outlet>
+         <router-outlet></router-outlet>
         <!--<chat-app></chat-app>-->
       </div>
     </div>
   </div>
+
+
 

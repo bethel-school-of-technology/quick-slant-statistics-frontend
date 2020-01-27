@@ -1,13 +1,18 @@
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 h3 {
-    text-align: center;
-    font-weight: 200;
+  text-align: center;
+  font-weight: 200;
 }
 
-.form-control {
-    max-width: 33%;
+.container-fluid {
+  max-width: 33%;
+  padding-top: 100px;
+}
+
+.bottom-nav {
+  font-style: italic;
 }

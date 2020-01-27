@@ -4,7 +4,7 @@
     <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" 
+        <input type="text" class="form-control" id="name"
             required
             [(ngModel)]="model.name" name="name"
             #name="ngModel">
@@ -29,7 +29,7 @@
           <label for="losses">Losses:</label>
           <input type="number" class="form-control" id="losses"
           required
-          [(ngModel)]="model.losses" name="losses">
+          [(ngModel)]="model.lossess" name="losses">
       </div>
       <button type="submit" class="btn btn-success"
       [disabled]="!teamForm.form.valid">Submit</button>
@@ -53,7 +53,7 @@
     </div>
     <div class="row">
         <div class="col-xs-3">Losses</div>
-        <div class="col-xs-9">{{ model.losses }}</div>
+        <div class="col-xs-9">{{ model.lossess }}</div>
     </div>
     <br>
     <button class="btn btn-primary" (click)="submitted=false">Edit</button>
