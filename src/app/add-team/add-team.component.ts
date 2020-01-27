@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Team } from '../models/team';
-//import { $ } from 'protractor';
+
 
 @Component({
   selector: 'app-add-team',
@@ -9,19 +9,15 @@ import { Team } from '../models/team';
 })
 export class AddTeamComponent {
 
-  //name = name
-  divisions = ['AFC East', 'AFC North', 'AFC South', 'AFC West', 'NFC East', 'NFC North', 'NFC South', 'NFC West'];
-  //fix these inputs
-  //wins = [];
- // losses= [];
 
-  //fix these inputs
+  divisions = ['AFC East', 'AFC North', 'AFC South', 'AFC West', 'NFC East', 'NFC North', 'NFC South', 'NFC West'];
+
   model = new Team(1, '', '', 0, 0);
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; 
-  
+  onSubmit() { this.submitted = true;
+
   }
 
 

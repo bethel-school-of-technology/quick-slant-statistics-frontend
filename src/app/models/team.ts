@@ -5,7 +5,7 @@ export class Team {
         public name: string,
         public division: string,
         public wins: number,
-        public losses: number
+        public lossess: number
     ) {}
 
-} 
+}

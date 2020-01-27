@@ -15,7 +15,7 @@ export class DisplayUserDataComponent implements OnInit {
   user: UserInfoModel = new UserInfoModel({
 
     guid: "D21ds12x",
-    uid: "1234abc",
+    uid: 1,
     first_name: "John",
     last_name: "Doe",
     email: "email@email.com",
@@ -31,7 +31,7 @@ export class DisplayUserDataComponent implements OnInit {
 
   ngOnInit() {//added during wire up
 this.subscriber = this.route.params.subscribe(params => {
-	       
+
 	       this.http.get('/api/v1/customer/' + params.generate_uid).subscribe((data:any) => { //look at this "uid"
            this.user = new UserInfoModel(data.customer);
       });
